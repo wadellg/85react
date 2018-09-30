@@ -17,3 +17,21 @@ const HelloWorld = React.createElement(Hello, null, null);
 ReactDOM.render(HelloWorld, document.getElementById('root'));
 ```
 
+## 第三步 增加对子组件支持
+
+```
+const Hello = function() {
+  return React.createElement('div', null, `Hello !`);
+}
+
+const World = function() {
+  return React.createElement('div', null, `World !`);
+}
+
+const divEle = React.createElement('div', null, `我被一个div标签包裹`);
+
+const HelloWorld = React.createElement(Hello, null, Hello, World, divEle, `我是空文本`);
+
+ReactDOM.render(HelloWorld, document.getElementById('root'));
+```
+此时，还未修改85react ，发现并未报错，但是子组件并没全部起作用。

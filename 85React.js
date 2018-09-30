@@ -1,10 +1,15 @@
 (()=> {
   
-  function createElement(parentEleTag, props, childEle) {
-    let parentElement = document.createElement(parentEleTag);
+  function createElement(parentEle, props, childEle) {
+    if (typeof parentEle === 'function') {      
+      return parentEle();
+    }else {
+      let parentElement = document.createElement(parentEle);
 
-    parentElement.innerHTML = childEle;
-    return parentElement;
+      parentElement.innerHTML = childEle;
+      return parentElement;
+    }
+    
   }
 
   function render(innerEle, rootEle) {

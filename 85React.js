@@ -2,7 +2,11 @@
   
   function createElement(parentEle, props, ...childEles) {
     //console.log(childEles);
-    if (typeof parentEle === 'function') {
+    if (typeof parentEle === 'function' && /^\s*class\s+/.test(parentEle.toString())) {
+      let component = new parentEle();
+      return component.render();
+    }
+    else if (typeof parentEle === 'function') {
       return parentEle();
     }else {
       let parentElement = document.createElement(parentEle);
